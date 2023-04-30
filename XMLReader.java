@@ -16,15 +16,18 @@ public class XMLReader {
            Document doc=db.parse(xmlFile);
            doc.getDocumentElement().normalize();
             System.out.println("root element: "+doc.getDocumentElement().getNodeName());
+            System.out.println("---------------------------");
             NodeList nodeList=doc.getElementsByTagName("book");
             for(int i=0;i<nodeList.getLength();i++){
                 Node node=nodeList.item(i);
+                System.out.println("<<<<<>>>>>");
                 if(node.getNodeType()==Node.ELEMENT_NODE){
                     Element element=(Element) node;
                     System.out.println("Book id: "+element.getAttribute("id"));
                     System.out.println("Author: "+element.getElementsByTagName("author").item(0).getTextContent());
                     System.out.println("Title: "+element.getElementsByTagName("title").item(0).getTextContent());
                 }
+                System.out.println();
             }
 
         } catch (Exception e) {
